@@ -1,4 +1,4 @@
-import {Server, ServerCredentials} from "grpc";
+const {Server, ServerCredentials} = require("grpc");
 
 async function main() {
     const server = new Server();
