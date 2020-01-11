@@ -1,0 +1,18 @@
+## Setup a Headless Service based on a read of the following
+## - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#srv-records
+## - https://github.com/grpc/grpc-go/blob/master/internal/resolver/dns/dns_resolver.go
+## - https://golang.org/pkg/net/#Resolver.LookupSRV
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservice
+spec:
+  selector:
+    name: myservice
+  clusterIP: None
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: tcp     # protocol must be tcp
+      name: plaintext   # uses A records
